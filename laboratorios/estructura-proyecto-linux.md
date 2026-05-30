@@ -83,4 +83,3 @@ cat docs/comandos-basicos.txt
 ---
 
 [Anterior: Comandos esenciales](../clases/04-comandos-esenciales.md) | [Siguiente: laboratorio multiusuario](./entorno-multiusuario-roles.md) | [Volver al indice](../README.md)
-
