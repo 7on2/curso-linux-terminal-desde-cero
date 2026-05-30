@@ -60,10 +60,7 @@ flowchart LR
 
 | Material | Descripcion |
 |---|---|
-| [Guia visual completa](./material/presentacion-linux-terminal-sesion-1.pdf) | Presentacion principal de la sesion 1: Linux y terminal. |
 | [Programa completo en PDF](./material/programa-fundamentos-de-linux.pdf) | Presentacion integrada del programa de Fundamentos de Linux. |
-| [Fuente Beamer del programa](./material/programa-fundamentos-de-linux.tex) | Archivo editable para regenerar el PDF del programa. |
-| [Guia de instructor](./material/guia-instructor-programa-fundamentos-de-linux.md) | Notas para explicar cada seccion y ejecutar micro-labs durante clase. |
 
 ## Recursos Complementarios
 
