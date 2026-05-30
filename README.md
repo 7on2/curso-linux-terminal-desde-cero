@@ -21,33 +21,17 @@ Aprende los fundamentos de Linux y la terminal desde cero, usando Ubuntu Server 
 
 > El indice sigue el programa completo: Linux y terminal, sistema de archivos, usuarios, permisos, configuracion y laboratorios guiados.
 
-### Mapa Rapido De La Guia
+### Ruta Rapida Del Programa
 
-```mermaid
-flowchart LR
-    A["Linux"] --> B["Distribuciones"]
-    B --> C["Ubuntu Server"]
-    C --> D["VirtualBox"]
-    D --> E["Terminal y Bash"]
-    E --> F["Sistema de archivos"]
-    F --> G["Comandos esenciales"]
-    G --> H["Usuarios y grupos"]
-    H --> I["Permisos"]
-    I --> J["Configuracion"]
-    J --> K["Laboratorios"]
-
-    style A fill:#1f6feb,stroke:#58a6ff,color:#fff
-    style B fill:#238636,stroke:#3fb950,color:#fff
-    style C fill:#8957e5,stroke:#bc8cff,color:#fff
-    style D fill:#30363d,stroke:#8b949e,color:#fff
-    style E fill:#9e6a03,stroke:#d29922,color:#fff
-    style F fill:#1f6feb,stroke:#58a6ff,color:#fff
-    style G fill:#238636,stroke:#3fb950,color:#fff
-    style H fill:#8957e5,stroke:#bc8cff,color:#fff
-    style I fill:#da3633,stroke:#f85149,color:#fff
-    style J fill:#9e6a03,stroke:#d29922,color:#fff
-    style K fill:#30363d,stroke:#8b949e,color:#fff
-```
+| Etapa | Enfoque | Resultado esperado |
+|---|---|---|
+| 1 | Linux, distribuciones y Ubuntu Server | Entender donde se ejecuta el laboratorio |
+| 2 | Terminal, Bash y sistema de archivos | Moverse por rutas y leer la estructura del sistema |
+| 3 | Comandos esenciales | Crear, copiar, mover, leer y validar archivos |
+| 4 | Usuarios, grupos y sudo | Reconocer identidades y elevar privilegios con criterio |
+| 5 | Permisos y propietarios | Aplicar `chmod`, `chown` y `chgrp` sin abrir accesos de mas |
+| 6 | Edicion de configuracion | Modificar archivos con respaldo y validacion |
+| 7 | Laboratorios | Consolidar la practica con evidencias reproducibles |
 
 ## Laboratorio
 
