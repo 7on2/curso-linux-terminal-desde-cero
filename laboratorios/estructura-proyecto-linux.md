@@ -8,14 +8,14 @@ Al finalizar tendras esta estructura:
 
 ```text
 proyecto-linux/
-├── README.txt
-├── backups/
-│   └── README.bak
-├── data/
-├── docs/
-│   └── comandos-basicos.txt
-└── scripts/
-    └── inicio.sh
+|-- README.txt
+|-- backups/
+|   `-- README.bak
+|-- data/
+|-- docs/
+|   `-- comandos-basicos.txt
+`-- scripts/
+    `-- inicio.sh
 ```
 
 ## Requisitos
@@ -40,14 +40,14 @@ La opcion `-p` permite crear carpetas intermedias sin error si ya existen.
 ## Paso 2: Escribir Y Revisar Contenido
 
 ```bash
-echo "Proyecto Linux - Sesion 1" > README.txt
+echo "Proyecto Linux - Bloque inicial" > README.txt
 echo "Comandos practicados:" > docs/notas.txt
 echo "pwd, ls, cd, mkdir, touch" >> docs/notas.txt
 cat README.txt
 cat docs/notas.txt
 ```
 
-En esta sesion usamos escritura basica para documentar el laboratorio.
+En este bloque usamos escritura basica para documentar el laboratorio.
 
 ## Paso 3: Copiar, Mover Y Validar
 
@@ -58,6 +58,15 @@ ls -R
 ```
 
 Resultado esperado: un proyecto ordenado, navegable y documentado desde la terminal.
+
+## Validacion Opcional
+
+```bash
+pwd
+tree . 2>/dev/null || find . -maxdepth 3 -type f -o -type d
+cat README.txt
+cat docs/comandos-basicos.txt
+```
 
 ## Checklist
 
@@ -73,4 +82,5 @@ Resultado esperado: un proyecto ordenado, navegable y documentado desde la termi
 
 ---
 
-[Anterior: Comandos esenciales](../clases/04-comandos-esenciales.md) | [Volver al indice](../README.md)
+[Anterior: Comandos esenciales](../clases/04-comandos-esenciales.md) | [Siguiente: laboratorio multiusuario](./entorno-multiusuario-roles.md) | [Volver al indice](../README.md)
+

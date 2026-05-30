@@ -76,4 +76,4 @@ cd ..
 
 ---
 
-[Anterior: Terminal y sistema de archivos](./03-terminal-sistema-archivos.md) | [Laboratorio: estructura de proyecto](../laboratorios/estructura-proyecto-linux.md)
+[Anterior: Terminal y sistema de archivos](./03-terminal-sistema-archivos.md) | [Siguiente: Identidad, usuarios y sudo](./05-identidad-usuarios-grupos-sudo.md) | [Laboratorio: estructura de proyecto](../laboratorios/estructura-proyecto-linux.md)
