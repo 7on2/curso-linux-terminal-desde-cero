@@ -1,0 +1,1146 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme[showlogo,nosectionpage]{UU}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{amsmath, amsfonts}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, calc}
+
+\definecolor{branchblue}{HTML}{0969DA}
+\definecolor{branchgreen}{HTML}{238636}
+\definecolor{branchpurple}{HTML}{8250DF}
+\definecolor{linkedinblue}{HTML}{0A66C2}
+
+\newcommand{\pitEdition}{9na Edicion}
+\newcommand{\pitSession}{Programa completo}
+
+\graphicspath{
+  {./}
+  {images/}
+}
+
+\newcommand{\ProgramCoverSlide}{%
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill[OTIred]
+        (current page.north west) rectangle
+        ([xshift=8mm]current page.south west);
+      \shade[left color=OTIred, right color=OTIred!0!white, opacity=0.22]
+        ([xshift=8mm]current page.north west) rectangle
+        ([xshift=0.38\paperwidth]current page.south west);
+    \end{tikzpicture}
+
+    \vspace*{0.45cm}
+    \begin{center}
+      \includegraphics[height=0.92cm,keepaspectratio]{logos/LOGO-UNI.png}\hspace{0.55cm}
+      \includegraphics[height=0.92cm,keepaspectratio]{logos/logo transformacion digital.png}\hspace{0.55cm}
+      \includegraphics[height=0.92cm,keepaspectratio]{logos/logo cursos gratuitos.png}
+    \end{center}
+
+    \vspace{0.65cm}
+    \begin{columns}[c]
+      \column{0.64\textwidth}
+      \hspace*{0.65cm}
+      \begin{minipage}{0.98\linewidth}
+        {\usebeamerfont{title}\fontsize{24}{30}\selectfont\bfseries\mbox{Fundamentos de Linux}}\par
+        \vspace{0.18cm}
+        {\usebeamerfont{subtitle}\color{UUdarkgray}\large \pitSession\ - \pitEdition}\par
+        \vspace{0.35cm}
+        {\color{OTIred}\rule{3cm}{1.5pt}}\par
+        \vspace{0.35cm}
+        {\usebeamerfont{author}\textbf{Instructor:} \href{https://www.linkedin.com/in/anthony-gonzalo-quispe-cordova-a39274196}{\color{linkedinblue}\faLinkedin\ Anthony Gonzalo Quispe Cordova}}\par
+        \vspace{0.12cm}
+        {\usebeamerfont{institute}\color{UUdarkgray}Oficina de Tecnolog\'ias de la Informaci\'on (OTI)}\par
+        \vspace{0.12cm}
+        {\usebeamerfont{date}\color{UUdarkgray}\today}
+      \end{minipage}
+
+      \column{0.28\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[rounded corners=8pt, fill=UUlightgray, draw=OTIred!35, minimum width=3.7cm, minimum height=3.0cm, align=center] {
+          {\color{green!60!black}\fontsize{42}{46}\selectfont\faLinux}\quad
+          {\color{UUdarkblue}\fontsize{42}{46}\selectfont\faTerminal}\\[0.25cm]
+          {\large\bfseries Linux + Shell}\\[0.05cm]
+          {\scriptsize Base para DevOps y automatizaci\'on}
+        };
+      \end{tikzpicture}
+    \end{columns}
+  \end{frame}
+}
+
+\newcommand{\MainHeaderSlide}[2]{%
+  \begin{frame}[plain]
+    \hypertarget{#2}{}
+    \vspace*{0.25\textheight}
+    {\color{black}\rule{0.28\textwidth}{1.2pt}}\\[0.5em]
+    {\usebeamerfont{title}\fontsize{34}{40}\selectfont\bfseries #1}
+  \end{frame}
+}
+
+\title[Programa Linux]{Fundamentos de Linux}
+\subtitle{\pitSession\ - \pitEdition}
+\author[Anthony Gonzalo Quispe Cordova]{Instructor: \href{https://www.linkedin.com/in/anthony-gonzalo-quispe-cordova-a39274196}{\color{linkedinblue}\faLinkedin\ Anthony Gonzalo Quispe Cordova}}
+\institute[OTI]{Oficina de Tecnolog\'ias de la Informaci\'on (OTI)}
+\date{\today}
+
+\begin{document}
+
+\ProgramCoverSlide
+
+% Slides obligatorios segun la plantilla OTI.
+\begin{frame}{Flujo de Cursos Orientado a DevOps}
+  \begin{center}
+    \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{images/flujo_cursos.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Horarios de los Cursos del Flujo DevOps}
+  \begin{center}
+  \begin{tikzpicture}[
+    card/.style={draw, rounded corners=4pt, minimum width=5.5cm, minimum height=2.6cm, align=center, text width=5.2cm},
+    titulo/.style={font=\bfseries\small},
+    detalle/.style={font=\footnotesize}
+  ]
+    \node[card, fill=black!85, draw=yellow, text=white] (c1) at (0,0) {
+      {\color{yellow}\faLinux\ \textbf{Fundamentos de Linux}}\\[4pt]
+      {\footnotesize \faCalendar\ S\'abados}\\
+      {\footnotesize \faClock\ 9:00 a.m. -- 12:00 p.m.}\\[2pt]
+      {\scriptsize \faFlag\ 23/05 -- 27/06 \quad | \quad 18 h}
+    };
+    \node[card, fill=OTIred!15, draw=OTIred!80, right=0.5cm of c1] (c2) {
+      {\color{OTIred}\faCodeBranch\ \textbf{Git y GitHub}}\\[4pt]
+      {\footnotesize \faCalendar\ Lun, Mar, Jue, Vie}\\
+      {\footnotesize \faClock\ 4:00 -- 7:00 p.m.}\\[2pt]
+      {\scriptsize \faFlag\ 19/05 -- 28/05 \quad | \quad 18 h}
+    };
+    \node[card, fill=blue!10, draw=blue!60, below=0.4cm of c1] (c3) {
+      {\color{blue!70}\faDocker\ \textbf{Fundamentos de Docker}}\\[4pt]
+      {\footnotesize \faCalendar\ Lun, Mar, Vie}\\
+      {\footnotesize \faClock\ 4:00 -- 7:00 p.m.}\\[2pt]
+      {\scriptsize \faFlag\ 29/05 -- 09/06 \quad | \quad 18 h}
+    };
+    \node[card, fill=orange!15, draw=orange!70, below=0.4cm of c2] (c4) {
+      {\color{orange!80!black}\faServer\ \textbf{Ansible: Automatizaci\'on}}\\[4pt]
+      {\footnotesize \faCalendar\ S\'abados}\\
+      {\footnotesize \faClock\ 2:00 -- 5:00 p.m.}\\[2pt]
+      {\scriptsize \faFlag\ 23/05 -- 27/06 \quad | \quad 18 h}
+    };
+  \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{\'Indice General}
+  \small
+  \begin{columns}[t]
+    \column{0.48\textwidth}
+    \textbf{Linux y Terminal desde Cero}
+    \begin{enumerate}
+      \item \hyperlink{idx-linux-importancia}{Linux y su importancia actual}
+      \item \hyperlink{idx-ubuntu-virtualbox}{Ubuntu Server en VirtualBox}
+      \item \hyperlink{idx-terminal-comandos}{Terminal y comandos esenciales}
+      \item \hyperlink{idx-laboratorio-practico}{Laboratorio practico}
+    \end{enumerate}
+    \column{0.48\textwidth}
+    \textbf{Usuarios, Permisos y Sistema de Archivos}
+    \begin{enumerate}
+      \item \hyperlink{idx-identidad-linux}{Identidad: usuarios, grupos y sudo}
+      \item \hyperlink{idx-permisos-linux}{Permisos, propietarios y modos}
+      \item \hyperlink{idx-editores-config}{Edicion de configuracion}
+      \item \hyperlink{idx-lab-multiusuario}{Laboratorio multiusuario}
+    \end{enumerate}
+  \end{columns}
+\end{frame}
+
+\section{Linux y Terminal desde Cero}
+\MainHeaderSlide{Linux y Terminal desde Cero}{idx-semana-1}
+
+\subsection{Linux y su importancia actual}
+\MainHeaderSlide{Linux y su importancia actual}{idx-linux-importancia}
+
+\subsection{Que es Linux}
+\begin{frame}{Que es Linux}
+  \begin{columns}[c]
+    \column{0.62\textwidth}
+    \begin{itemize}
+      \item \textbf{Linux} es un sistema operativo libre, de codigo abierto y tipo Unix.
+      \item Su componente central es el \textbf{kernel}: administra CPU, memoria, disco, red y dispositivos.
+      \item Una \textbf{distribucion} agrega herramientas, instalador, repositorios y configuracion lista para usar.
+      \item Ejemplos comunes: Ubuntu, Debian, Fedora, Rocky Linux, Kali Linux y Arch Linux.
+    \end{itemize}
+    \column{0.33\textwidth}
+    \centering
+    {\color{OTIred}\fontsize{58}{64}\selectfont\faLinux}\\[0.35cm]
+    {\large\textbf{Base de servidores modernos}}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Por que Linux domina servidores, nube y ciberseguridad}
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \begin{block}{\faServer\ Servidores}
+      \small
+      Estabilidad, bajo consumo, automatizacion y administracion remota por terminal.
+    \end{block}
+    \column{0.33\textwidth}
+    \begin{exampleblock}{\faCloud\ Nube}
+      \small
+      La mayoria de servicios cloud, contenedores y pipelines DevOps trabajan sobre Linux.
+    \end{exampleblock}
+    \column{0.33\textwidth}
+    \begin{alertblock}{\faUserShield\ Seguridad}
+      \small
+      Herramientas de analisis, hardening, monitoreo y respuesta suelen ejecutarse en Linux.
+    \end{alertblock}
+  \end{columns}
+  \vfill
+  \begin{beamercolorbox}[rounded=true, shadow=false, sep=4pt, center]{block body}
+    \small Aprender Linux es aprender la base operativa de infraestructura, DevOps, redes y seguridad.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}{Distribuciones: el mismo nucleo, distintos objetivos}
+  \begin{center}
+  \begin{tikzpicture}[
+    box/.style={draw, rounded corners=6pt, minimum width=4.8cm, minimum height=1.8cm, align=center, text width=4.4cm, font=\small}
+  ]
+    \node[box, fill=orange!15, draw=orange!70] (b1) at (0,0) {
+      {\color{orange!80!black}\faUbuntu\ \textbf{Ubuntu Server}}\\[3pt]
+      Servidores y aprendizaje.
+    };
+    \node[box, fill=green!15, draw=green!60!black] (b2) at (5.5,0) {
+      {\color{green!60!black}\faLinux\ \textbf{Debian}}\\[3pt]
+      Estabilidad y base comunitaria.
+    };
+    \node[box, fill=blue!10, draw=blue!60] (b3) at (0,-2.45) {
+      {\color{blue!70}\faServer\ \textbf{Rocky / RHEL}}\\[3pt]
+      Empresa y produccion.
+    };
+    \node[box, fill=OTIred!12, draw=OTIred!70] (b4) at (5.5,-2.45) {
+      {\color{OTIred}\faUserShield\ \textbf{Kali Linux}}\\[3pt]
+      Seguridad ofensiva y laboratorios.
+    };
+  \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\subsection{Distros, escritorios y paquetes}
+\begin{frame}{Familias de distribuciones Linux}
+  \small
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \begin{block}{Debian}
+      \begin{itemize}
+        \item Debian
+        \item Ubuntu
+        \item Linux Mint
+        \item Kali Linux
+      \end{itemize}
+      \centering\texttt{apt}, \texttt{dpkg}
+    \end{block}
+    \column{0.33\textwidth}
+    \begin{alertblock}{Red Hat}
+      \begin{itemize}
+        \item RHEL
+        \item Fedora
+        \item Rocky Linux
+        \item AlmaLinux
+      \end{itemize}
+      \centering\texttt{dnf}, \texttt{rpm}
+    \end{alertblock}
+    \column{0.33\textwidth}
+    \begin{exampleblock}{Arch / SUSE}
+      \begin{itemize}
+        \item Arch Linux
+        \item Manjaro
+        \item openSUSE
+        \item SUSE Linux
+      \end{itemize}
+      \centering\texttt{pacman}, \texttt{zypper}
+    \end{exampleblock}
+  \end{columns}
+  \vfill
+  \begin{beamercolorbox}[rounded=true, shadow=false, sep=4pt, center]{block body}
+    \small La familia define repositorios, formato de paquetes, comandos de instalacion y ciclo de actualizaciones.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}{Entornos de escritorio vs gestores de ventanas}
+  \footnotesize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Entorno de escritorio}
+      \begin{itemize}
+        \item Experiencia grafica completa.
+        \item Paneles, menus, configuracion y apps base.
+        \item Ejemplos: GNOME, KDE Plasma, XFCE, Cinnamon.
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Gestor de ventanas}
+      \begin{itemize}
+        \item Controla como se abren y acomodan ventanas.
+        \item Puede ser flotante o tipo mosaico.
+        \item Ejemplos: i3, Openbox, AwesomeWM, Sway.
+      \end{itemize}
+    \end{exampleblock}
+  \end{columns}
+  \vspace{0.12cm}
+  \begin{alertblock}{Importante para servidores}
+    Ubuntu Server normalmente se administra \textbf{sin entorno grafico}; por eso la terminal es la herramienta principal.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Paqueterias y gestores de paquetes}
+  \small
+  \begin{center}
+  \begin{tabular}{p{0.23\textwidth} p{0.19\textwidth} p{0.16\textwidth} p{0.31\textwidth}}
+    \toprule
+    Familia & Formato & Gestor & Ejemplo \\
+    \midrule
+    Debian / Ubuntu & \texttt{.deb} & \texttt{apt} & \texttt{sudo apt install vim} \\
+    Red Hat / Fedora & \texttt{.rpm} & \texttt{dnf} & \texttt{sudo dnf install vim} \\
+    Arch / Manjaro & \texttt{pkg.tar.zst} & \texttt{pacman} & \texttt{sudo pacman -S vim} \\
+    openSUSE / SUSE & \texttt{.rpm} & \texttt{zypper} & \texttt{sudo zypper install vim} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \vspace{0.25cm}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Repositorio}
+      \small Servidor confiable desde donde la distro descarga software y actualizaciones.
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Paquete}
+      \small Archivo instalable que incluye programa, metadatos, version y dependencias.
+    \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Formatos universales de instalacion}
+  \small
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \begin{block}{Snap}
+      \begin{itemize}
+        \item Usado por Ubuntu.
+        \item Apps autocontenidas.
+        \item Comando: \texttt{snap}.
+      \end{itemize}
+    \end{block}
+    \column{0.33\textwidth}
+    \begin{exampleblock}{Flatpak}
+      \begin{itemize}
+        \item Popular en escritorio.
+        \item Repos como Flathub.
+        \item Comando: \texttt{flatpak}.
+      \end{itemize}
+    \end{exampleblock}
+    \column{0.33\textwidth}
+    \begin{alertblock}{AppImage}
+      \begin{itemize}
+        \item Archivo ejecutable.
+        \item No requiere instalacion tradicional.
+        \item Util para apps portables.
+      \end{itemize}
+    \end{alertblock}
+  \end{columns}
+  \vfill
+  \centering
+  \small En servidores se priorizan repositorios oficiales; en escritorio aparecen mas formatos universales.
+\end{frame}
+
+\subsection{Ubuntu Server en VirtualBox}
+\MainHeaderSlide{Ubuntu Server en VirtualBox}{idx-ubuntu-virtualbox}
+
+\subsection{Objetivo del entorno}
+\begin{frame}{Objetivo del entorno virtual}
+  \begin{columns}[c]
+    \column{0.55\textwidth}
+    \begin{itemize}
+      \item Practicar Linux sin modificar el sistema principal.
+      \item Crear un servidor real en una maquina virtual.
+      \item Aprender a iniciar sesion y trabajar desde la terminal.
+      \item Repetir, romper y reconstruir el laboratorio con seguridad.
+    \end{itemize}
+    \column{0.4\textwidth}
+    \centering
+    \begin{tikzpicture}[
+      box/.style={draw, rounded corners=4pt, minimum width=3.3cm, minimum height=0.9cm, align=center, font=\small},
+      arr/.style={-{Stealth[length=2mm]}, thick, OTIred}
+    ]
+      \node[box, fill=UUlightgray] (host) {\faLaptop\ Equipo fisico};
+      \node[box, fill=UUsoftred, below=0.45cm of host] (vbox) {\faCube\ VirtualBox};
+      \node[box, fill=UUlightgray, below=0.45cm of vbox] (vm) {\faServer\ Ubuntu Server};
+      \node[box, fill=UUsoftred, below=0.45cm of vm] (term) {\faTerminal\ Terminal};
+      \draw[arr] (host) -- (vbox);
+      \draw[arr] (vbox) -- (vm);
+      \draw[arr] (vm) -- (term);
+    \end{tikzpicture}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Requisitos para la instalacion}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Software}
+      \begin{itemize}
+        \item Oracle VirtualBox instalado.
+        \item ISO de Ubuntu Server.
+        \item Conexion a internet para descargas.
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Recursos sugeridos}
+      \begin{itemize}
+        \item RAM: 2 GB como minimo.
+        \item CPU: 2 nucleos si estan disponibles.
+        \item Disco: 20 GB dinamico.
+        \item Red: NAT para empezar.
+      \end{itemize}
+    \end{block}
+  \end{columns}
+  \vfill
+  \begin{alertblock}{Antes de iniciar}
+    \small Verifica que la virtualizacion este habilitada en BIOS/UEFI si VirtualBox no permite crear maquinas de 64 bits.
+  \end{alertblock}
+\end{frame}
+
+\subsection{Pasos de instalacion}
+\begin{frame}{Crear la maquina virtual}
+  \begin{enumerate}
+    \item Crear una nueva VM: \textbf{Linux} / \textbf{Ubuntu (64-bit)}.
+    \item Asignar memoria y procesadores.
+    \item Crear disco duro virtual VDI, reservado dinamicamente.
+    \item Montar la ISO de Ubuntu Server en la unidad optica.
+    \item Iniciar la VM y seguir el instalador.
+  \end{enumerate}
+  \vfill
+  \begin{beamercolorbox}[rounded=true, shadow=false, sep=4pt, center]{block body}
+    \small Meta: terminar con un servidor Ubuntu arrancando y pidiendo usuario/contrasena en consola.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}{Decisiones dentro del instalador}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Configuracion base}
+      \begin{itemize}
+        \item Idioma y teclado.
+        \item Red por DHCP.
+        \item Disco completo para la VM.
+        \item Usuario administrador del laboratorio.
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Perfil recomendado}
+      \begin{itemize}
+        \item Nombre servidor: \texttt{linux-lab}.
+        \item Usuario: \texttt{pit}.
+        \item Instalar OpenSSH si se usara acceso remoto.
+        \item No instalar extras innecesarios.
+      \end{itemize}
+    \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Primer ingreso al servidor}
+  \begin{itemize}
+    \item Inicia sesion con el usuario creado durante la instalacion.
+    \item Confirma que estas en Linux y que tienes conexion.
+    \item Ubica tu carpeta personal y reconoce el prompt.
+  \end{itemize}
+  \vspace{0.25cm}
+  \begin{exampleblock}{Comandos iniciales}
+\begin{verbatim}
+whoami
+hostname
+pwd
+ip addr
+\end{verbatim}
+  \end{exampleblock}
+\end{frame}
+
+\subsection{Terminal y comandos esenciales}
+\MainHeaderSlide{Terminal y comandos esenciales}{idx-terminal-comandos}
+
+\subsection{Terminal, shell y rutas}
+\begin{frame}{Terminal, shell y sistema de archivos}
+  \begin{itemize}
+    \item \textbf{Terminal:} interfaz donde escribimos comandos.
+    \item \textbf{Shell:} programa que interpreta esos comandos; en Ubuntu suele ser Bash.
+    \item \textbf{Ruta absoluta:} empieza desde la raiz, por ejemplo \texttt{/home/pit}.
+    \item \textbf{Ruta relativa:} parte desde la ubicacion actual, por ejemplo \texttt{Documentos/notas.txt}.
+  \end{itemize}
+  \vfill
+  \begin{beamercolorbox}[rounded=true, shadow=false, sep=4pt, center]{block body}
+    \small En Linux todo vive dentro de un arbol que empieza en \texttt{/}; no existen unidades \texttt{C:} o \texttt{D:}.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}{Estructura basica del sistema}
+  \begin{center}
+  \footnotesize
+  \begin{tabular}{>{\ttfamily}l p{0.68\textwidth}}
+    \toprule
+    \normalfont Directorio & Uso principal \\
+    \midrule
+    /        & Raiz del sistema \\
+    /home    & Carpetas de usuarios \\
+    /etc     & Configuracion del sistema \\
+    /var     & Datos variables como logs \\
+    /tmp     & Archivos temporales \\
+    /bin     & Comandos esenciales \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \vspace{0.35cm}
+  \centering
+  \small La primera practica se concentrara en moverse por este arbol y crear estructura propia.
+\end{frame}
+
+\subsection{Navegar, crear y gestionar archivos}
+\begin{frame}[fragile]{Comandos para navegar}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Ubicacion}
+\begin{verbatim}
+pwd
+ls
+ls -la
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Movimiento}
+\begin{verbatim}
+cd carpeta
+cd ..
+cd ~
+clear
+\end{verbatim}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Comandos para crear y gestionar}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Crear}
+\begin{verbatim}
+mkdir proyecto
+mkdir -p app/src
+touch notas.txt
+nano notas.txt
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Gestionar}
+\begin{verbatim}
+cp origen destino
+mv origen destino
+rm archivo
+rm -r carpeta
+\end{verbatim}
+    \end{block}
+  \end{columns}
+  \vfill
+  \begin{alertblock}{Precaucion}
+    \small Antes de eliminar con \texttt{rm}, confirma tu ruta con \texttt{pwd} y revisa con \texttt{ls}.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Ver contenido de archivos}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Lectura rapida}
+\begin{verbatim}
+cat archivo
+head archivo
+tail archivo
+less archivo
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Buenas practicas}
+      \begin{itemize}
+        \item Usar nombres claros.
+        \item Evitar espacios en rutas al empezar.
+        \item Organizar por carpetas.
+        \item Leer mensajes de error con calma.
+      \end{itemize}
+    \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\subsection{Laboratorio practico}
+\MainHeaderSlide{Laboratorio practico}{idx-laboratorio-practico}
+
+\subsection{Construir una estructura real}
+\begin{frame}[fragile]{Laboratorio: estructura de proyecto en Linux}
+  \begin{columns}[c]
+    \column{0.55\textwidth}
+    \begin{itemize}
+      \item Crear una carpeta principal del curso.
+      \item Separar documentacion, scripts, datos y respaldos.
+      \item Crear archivos iniciales.
+      \item Copiar, mover y renombrar elementos.
+      \item Validar la estructura final desde terminal.
+    \end{itemize}
+    \column{0.4\textwidth}
+    \footnotesize
+    \begin{block}{Estructura esperada}
+\begin{verbatim}
+proyecto-linux/
+  docs/
+  scripts/
+  data/
+  backups/
+  README.txt
+\end{verbatim}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Paso 1: crear carpetas y archivos}
+  \begin{exampleblock}{Comandos}
+\begin{verbatim}
+cd ~
+mkdir -p proyecto-linux/{docs,scripts,data,backups}
+cd proyecto-linux
+touch README.txt docs/notas.txt scripts/inicio.sh
+pwd
+ls -la
+\end{verbatim}
+  \end{exampleblock}
+  \vfill
+  \small La opcion \texttt{-p} permite crear carpetas intermedias sin error si ya existen.
+\end{frame}
+
+\begin{frame}[fragile]{Paso 2: escribir y revisar contenido}
+  \begin{exampleblock}{Comandos}
+\begin{verbatim}
+echo "Proyecto Linux - Bloque inicial" > README.txt
+echo "Comandos practicados:" > docs/notas.txt
+echo "pwd, ls, cd, mkdir, touch" >> docs/notas.txt
+cat README.txt
+cat docs/notas.txt
+\end{verbatim}
+  \end{exampleblock}
+  \vfill
+  \small En esta semana solo usaremos escritura basica para documentar el laboratorio.
+\end{frame}
+
+\begin{frame}[fragile]{Paso 3: copiar, mover y validar}
+  \begin{exampleblock}{Comandos}
+\begin{verbatim}
+cp README.txt backups/README.bak
+mv docs/notas.txt docs/comandos-basicos.txt
+ls -R
+\end{verbatim}
+  \end{exampleblock}
+  \vfill
+  \begin{beamercolorbox}[rounded=true, shadow=false, sep=4pt, center]{block body}
+    \small Resultado: un proyecto ordenado, navegable y documentado desde la terminal.
+  \end{beamercolorbox}
+\end{frame}
+
+\subsection{Cierre}
+\begin{frame}{Checklist de aprendizaje}
+  \begin{itemize}
+    \item Puedo explicar que es Linux y por que se usa en servidores.
+    \item Puedo diferenciar distribuciones, escritorios y gestores de paquetes.
+    \item Puedo describir como se instala Ubuntu Server en VirtualBox.
+    \item Puedo moverme por el sistema de archivos desde la terminal.
+    \item Puedo crear, copiar, mover y revisar archivos con comandos basicos.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Cierre: Linux y Terminal}
+  \begin{enumerate}
+    \item Linux es la base de servidores, nube, DevOps y ciberseguridad.
+    \item Ubuntu Server en VirtualBox permite practicar en un entorno real y controlado.
+    \item La terminal y Bash permiten controlar el sistema mediante comandos.
+    \item El sistema de archivos parte desde \texttt{/} y organiza todo en carpetas.
+    \item El laboratorio construyo una estructura de proyecto real en Linux.
+  \end{enumerate}
+  \vspace{0.3cm}
+  \begin{alertblock}{Siguiente bloque}
+    \textbf{Tema siguiente:} usuarios, permisos y sistema de archivos. Veremos como Linux organiza el acceso y protege recursos del sistema.
+  \end{alertblock}
+\end{frame}
+
+\section{Usuarios, Permisos y Sistema de Archivos}
+
+\subsection{Identidad en Linux}
+\MainHeaderSlide{Identidad: usuarios, grupos y sudo}{idx-identidad-linux}
+
+\begin{frame}{Objetivos: usuarios, permisos y archivos}
+  \begin{columns}[c]
+    \column{0.58\textwidth}
+    \begin{itemize}
+      \item Entender como Linux controla el acceso mediante usuarios, grupos y permisos.
+      \item Leer permisos y propietarios sin depender de memoria mecanica.
+      \item Usar \texttt{sudo}, \texttt{chmod}, \texttt{chown} y \texttt{chgrp} con criterio.
+      \item Editar archivos de configuracion con Nano y una base practica de Vim.
+      \item Construir un entorno multiusuario con accesos protegidos por rol.
+    \end{itemize}
+    \column{0.36\textwidth}
+    \centering
+    {\color{OTIred}\fontsize{52}{58}\selectfont\faUserShield}\\[0.25cm]
+    {\large\textbf{Seguridad por identidad, propiedad y permisos}}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Como Linux decide quien puede hacer que}
+  \small
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \begin{block}{Usuario}
+      Identidad que ejecuta procesos, crea archivos y tiene una carpeta de trabajo.
+    \end{block}
+    \column{0.33\textwidth}
+    \begin{exampleblock}{Grupo}
+      Conjunto de usuarios usado para compartir permisos sobre recursos.
+    \end{exampleblock}
+    \column{0.33\textwidth}
+    \begin{alertblock}{Otros}
+      Cualquier usuario que no sea propietario ni pertenezca al grupo del recurso.
+    \end{alertblock}
+  \end{columns}
+  \vfill
+  \begin{beamercolorbox}[rounded=true, shadow=false, sep=4pt, center]{block body}
+    \small Cada archivo tiene propietario, grupo propietario y permisos separados para usuario, grupo y otros.
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[fragile]{Usuarios, root y sudo}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Identidades clave}
+      \begin{itemize}
+        \item \textbf{root:} administrador total del sistema.
+        \item \textbf{Usuario regular:} trabaja con permisos limitados.
+        \item \textbf{sudo:} eleva privilegios solo para una accion concreta.
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Comandos de reconocimiento}
+\begin{verbatim}
+whoami
+id
+groups
+sudo -l
+\end{verbatim}
+    \end{exampleblock}
+  \end{columns}
+  \vfill
+  \begin{alertblock}{Regla operativa}
+    Operar como usuario normal y elevar privilegios solo cuando sea necesario.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Gestion basica de cuentas y grupos}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Usuarios}
+\begin{verbatim}
+sudo adduser ana
+sudo passwd ana
+id ana
+sudo deluser ana
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Grupos}
+\begin{verbatim}
+sudo groupadd devops
+sudo usermod -aG devops ana
+groups ana
+sudo groupdel devops
+\end{verbatim}
+    \end{block}
+  \end{columns}
+  \vfill
+  \small Usar \texttt{usermod -aG}: \texttt{-a} agrega sin borrar otros grupos; \texttt{-G} define grupos suplementarios.
+\end{frame}
+
+\begin{frame}{Archivos del sistema relacionados con identidad}
+  \footnotesize
+  \begin{center}
+  \begin{tabular}{>{\ttfamily}p{0.22\textwidth} p{0.62\textwidth}}
+    \toprule
+    \normalfont Archivo & Funcion principal \\
+    \midrule
+    /etc/passwd & Lista usuarios, UID, GID principal, carpeta personal y shell. \\
+    /etc/shadow & Guarda hashes de contrasenas y politicas de expiracion. \\
+    /etc/group & Define grupos y miembros suplementarios. \\
+    /etc/sudoers & Controla quien puede ejecutar comandos con privilegios. \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \vspace{0.25cm}
+  \begin{alertblock}{Cuidado}
+    \small No editar \texttt{/etc/sudoers} con un editor comun. Usar \texttt{visudo} para validar sintaxis antes de guardar.
+  \end{alertblock}
+\end{frame}
+
+\subsection{Permisos y propietarios}
+\MainHeaderSlide{Permisos, propietarios y modos}{idx-permisos-linux}
+
+\begin{frame}[fragile]{Leer permisos con ls -l}
+  \begin{exampleblock}{Salida tipica}
+\begin{verbatim}
+-rw-r----- 1 ana devops 1240 may 30 14:10 reporte.txt
+drwxr-x--- 2 root devops 4096 may 30 14:15 proyectos
+\end{verbatim}
+  \end{exampleblock}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Primer caracter: tipo de archivo.
+      \item Luego vienen permisos de usuario, grupo y otros.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Despues aparecen propietario y grupo.
+      \item Fechas, tamanos y nombres ayudan a validar cambios.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Permisos rwx}
+  \small
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \begin{block}{\texttt{r} lectura}
+      Permite leer un archivo o listar nombres dentro de un directorio.
+    \end{block}
+    \column{0.33\textwidth}
+    \begin{exampleblock}{\texttt{w} escritura}
+      Permite modificar un archivo o crear, borrar y renombrar dentro de un directorio.
+    \end{exampleblock}
+    \column{0.33\textwidth}
+    \begin{alertblock}{\texttt{x} ejecucion}
+      Permite ejecutar un archivo o atravesar un directorio para acceder a su contenido.
+    \end{alertblock}
+  \end{columns}
+  \vfill
+  \centering
+  \small En directorios, \texttt{x} significa acceso/travesia; sin \texttt{x}, listar no basta para entrar.
+\end{frame}
+
+\begin{frame}{Modo simbolico y modo octal}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Simbolico}
+      \begin{itemize}
+        \item \texttt{u}: usuario propietario.
+        \item \texttt{g}: grupo propietario.
+        \item \texttt{o}: otros.
+        \item \texttt{a}: todos.
+        \item Operadores: \texttt{+}, \texttt{-}, \texttt{=}.
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Octal}
+      \begin{itemize}
+        \item \texttt{r = 4}
+        \item \texttt{w = 2}
+        \item \texttt{x = 1}
+        \item \texttt{755 = rwx r-x r-x}
+        \item \texttt{640 = rw- r-- ---}
+      \end{itemize}
+    \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{chmod: cambiar permisos}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Modo simbolico}
+\begin{verbatim}
+chmod u+x script.sh
+chmod g+w reporte.txt
+chmod o-r secreto.txt
+chmod a=r archivo.txt
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Modo octal}
+\begin{verbatim}
+chmod 755 script.sh
+chmod 644 index.html
+chmod 640 reporte.txt
+chmod 700 carpeta_privada
+\end{verbatim}
+    \end{block}
+  \end{columns}
+  \vfill
+  \begin{alertblock}{Evitar}
+    \small \texttt{chmod 777} no debe ser la solucion por defecto: abre lectura, escritura y ejecucion a todos.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{chown y chgrp: cambiar propiedad}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Propietario y grupo}
+\begin{verbatim}
+sudo chown ana reporte.txt
+sudo chown ana:devops reporte.txt
+sudo chown -R ana:devops proyecto/
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Solo grupo}
+\begin{verbatim}
+sudo chgrp devops reporte.txt
+sudo chgrp -R devops proyecto/
+ls -l
+\end{verbatim}
+    \end{block}
+  \end{columns}
+  \vfill
+  \small Cambiar propiedad requiere privilegios porque modifica quien controla el recurso.
+\end{frame}
+
+\begin{frame}{Permisos recomendados en situaciones comunes}
+  \footnotesize
+  \begin{center}
+  \begin{tabular}{p{0.28\textwidth} p{0.18\textwidth} p{0.38\textwidth}}
+    \toprule
+    Caso & Permiso & Criterio \\
+    \midrule
+    Archivo publico de lectura & \texttt{644} & Propietario escribe; todos leen. \\
+    Script ejecutable & \texttt{755} & Propietario modifica; otros ejecutan. \\
+    Archivo sensible & \texttt{600} & Solo propietario lee y escribe. \\
+    Carpeta privada & \texttt{700} & Solo propietario entra y modifica. \\
+    Carpeta compartida por grupo & \texttt{770} & Usuario y grupo trabajan; otros no entran. \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \vspace{0.25cm}
+  \centering
+  \small El permiso correcto depende del rol del archivo, no de una receta unica.
+\end{frame}
+
+\begin{frame}{Enlaces simbolicos y enlaces duros}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Enlace simbolico}
+      Apunta a una ruta. Si el destino cambia o se borra, el enlace puede quedar roto.
+      \vspace{0.15cm}
+
+      \texttt{ln -s destino enlace}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Enlace duro}
+      Comparte el mismo inodo del archivo. No es una copia separada.
+      \vspace{0.15cm}
+
+      \texttt{ln destino enlace}
+    \end{exampleblock}
+  \end{columns}
+  \vfill
+  \small Para administracion diaria y configuraciones, el enlace simbolico suele ser el mas visible y facil de interpretar.
+\end{frame}
+
+\subsection{Editar configuracion}
+\MainHeaderSlide{Edicion de configuracion}{idx-editores-config}
+
+\begin{frame}[fragile]{Nano: edicion directa para empezar}
+  \begin{columns}[t]
+    \column{0.48\textwidth}
+    \begin{itemize}
+      \item Simple para editar archivos pequenos.
+      \item Muestra atajos en la parte inferior.
+      \item Es util cuando el objetivo es corregir rapido y guardar.
+    \end{itemize}
+    \column{0.52\textwidth}
+    \begin{exampleblock}{Flujo basico}
+\begin{verbatim}
+nano archivo.conf
+Ctrl + O   guardar
+Enter      confirmar nombre
+Ctrl + X   salir
+\end{verbatim}
+    \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Vim basico: sobrevivir en servidores}
+  \small
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Modos esenciales}
+\begin{verbatim}
+vim archivo.conf
+i       insertar
+Esc     modo normal
+:w      guardar
+:q      salir
+:wq     guardar y salir
+:q!     salir sin guardar
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{exampleblock}{Acciones utiles}
+\begin{verbatim}
+/texto  buscar
+dd      borrar linea
+u       deshacer
+yy      copiar linea
+p       pegar
+\end{verbatim}
+    \end{exampleblock}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Buenas practicas al editar configuracion}
+  \begin{enumerate}
+    \item Identificar el archivo exacto y confirmar ruta con \texttt{pwd} o ruta absoluta.
+    \item Hacer copia antes de cambiar: \texttt{sudo cp archivo archivo.bak}.
+    \item Editar el minimo necesario y guardar con comentarios claros si aplica.
+    \item Validar sintaxis cuando exista comando de prueba.
+    \item Reiniciar o recargar el servicio solo despues de validar.
+  \end{enumerate}
+  \vfill
+  \begin{alertblock}{Criterio}
+    \small En servidores, editar sin copia y sin validacion convierte un cambio pequeno en una caida innecesaria.
+  \end{alertblock}
+\end{frame}
+
+\subsection{Laboratorio multiusuario}
+\MainHeaderSlide{Laboratorio multiusuario}{idx-lab-multiusuario}
+
+\begin{frame}{Laboratorio: entorno multiusuario por rol}
+  \begin{columns}[c]
+    \column{0.58\textwidth}
+    \begin{itemize}
+      \item Crear usuarios para simular un equipo de trabajo.
+      \item Crear grupos por rol.
+      \item Preparar una carpeta compartida.
+      \item Asignar propietario, grupo y permisos.
+      \item Validar que cada usuario solo acceda a lo que corresponde.
+    \end{itemize}
+    \column{0.36\textwidth}
+    \begin{block}{Escenario}
+      \small Equipo: \texttt{devops}\\
+      Usuarios: \texttt{ana}, \texttt{luis}\\
+      Carpeta: \texttt{/srv/proyecto}\\
+      Acceso: grupo puede trabajar; otros no.
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Paso 1: crear usuarios, grupo y carpeta}
+  \begin{exampleblock}{Preparar}
+\begin{verbatim}
+sudo adduser ana
+sudo adduser luis
+sudo groupadd devops
+sudo usermod -aG devops ana
+sudo usermod -aG devops luis
+sudo mkdir -p /srv/proyecto
+\end{verbatim}
+  \end{exampleblock}
+  \vfill
+  \small En un laboratorio real se pueden usar contrasenas temporales y luego eliminarlas al finalizar.
+\end{frame}
+
+\begin{frame}[fragile]{Paso 2: asignar propiedad y permisos}
+  \begin{exampleblock}{Configurar}
+\begin{verbatim}
+sudo chown root:devops /srv/proyecto
+sudo chmod 770 /srv/proyecto
+ls -ld /srv/proyecto
+\end{verbatim}
+  \end{exampleblock}
+  \vfill
+  \begin{block}{Interpretacion}
+    \small \texttt{770} permite acceso total al propietario y al grupo; bloquea completamente a otros usuarios.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Paso 3: validar accesos}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Usuario autorizado}
+\begin{verbatim}
+su - ana
+cd /srv/proyecto
+touch ana.txt
+ls -l
+exit
+\end{verbatim}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Revision como administrador}
+\begin{verbatim}
+sudo ls -la /srv/proyecto
+sudo -u luis bash
+touch /srv/proyecto/luis.txt
+exit
+sudo ls -la /srv/proyecto
+\end{verbatim}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Paso 4: limpiar el laboratorio}
+  \begin{exampleblock}{Limpieza}
+\begin{verbatim}
+sudo rm -rf /srv/proyecto
+sudo deluser ana
+sudo deluser luis
+sudo groupdel devops
+\end{verbatim}
+  \end{exampleblock}
+  \vfill
+  \begin{alertblock}{Antes de borrar}
+    \small Confirmar la ruta exacta con \texttt{ls -ld /srv/proyecto}. Nunca ejecutar \texttt{rm -rf} sobre una ruta dudosa.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Checklist de aprendizaje}
+  \begin{itemize}
+    \item Puedo explicar la diferencia entre usuario, grupo y otros.
+    \item Puedo leer permisos desde una salida \texttt{ls -l}.
+    \item Puedo aplicar \texttt{chmod} en modo simbolico y octal.
+    \item Puedo cambiar propietario y grupo con \texttt{chown} y \texttt{chgrp}.
+    \item Puedo editar configuraciones basicas con Nano y salir correctamente de Vim.
+    \item Puedo construir una carpeta compartida protegida por rol.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Resumen: usuarios, permisos y archivos}
+  \begin{enumerate}
+    \item Linux separa identidad, propiedad y permisos para proteger recursos.
+    \item \texttt{sudo} permite privilegios temporales sin trabajar siempre como \texttt{root}.
+    \item \texttt{chmod} define accesos; \texttt{chown} y \texttt{chgrp} definen control.
+    \item Nano y Vim permiten modificar configuraciones desde servidores sin entorno grafico.
+    \item El laboratorio consolida un entorno multiusuario con acceso por rol.
+  \end{enumerate}
+  \vspace{0.25cm}
+  \begin{alertblock}{Siguiente bloque}
+    \textbf{Tema siguiente:} procesos, servicios y paquetes. Veremos como monitorear el sistema, controlar procesos y administrar software.
+  \end{alertblock}
+\end{frame}
+
+\end{document}
