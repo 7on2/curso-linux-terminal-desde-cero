@@ -18,6 +18,8 @@ Aprende los fundamentos de Linux y la terminal desde cero, usando Ubuntu Server 
 | 05 | Identidad en Linux: usuarios, grupos y sudo | [Abrir](./clases/05-identidad-usuarios-grupos-sudo.md) |
 | 06 | Permisos, propietarios y modos | [Abrir](./clases/06-permisos-propietarios-modos.md) |
 | 07 | Edicion de configuracion | [Abrir](./clases/07-edicion-configuracion.md) |
+| 08 | Servicios y systemd | [Abrir](./clases/08-servicios-systemd.md) |
+| 09 | Gestion de paquetes | [Abrir](./clases/09-gestion-paquetes.md) |
 
 > El indice sigue el programa completo: Linux y terminal, sistema de archivos, usuarios, permisos, configuracion y laboratorios guiados.
 
@@ -31,7 +33,9 @@ Aprende los fundamentos de Linux y la terminal desde cero, usando Ubuntu Server 
 | 4 | Usuarios, grupos y sudo | Reconocer identidades y elevar privilegios con criterio |
 | 5 | Permisos y propietarios | Aplicar `chmod`, `chown` y `chgrp` sin abrir accesos de mas |
 | 6 | Edicion de configuracion | Modificar archivos con respaldo y validacion |
-| 7 | Laboratorios | Consolidar la practica con evidencias reproducibles |
+| 7 | Servicios y systemd | Gestionar servicios del sistema, iniciar, detener, habilitar y revisar logs |
+| 8 | Gestion de paquetes | Instalar, actualizar y eliminar software con APT y Snap |
+| 9 | Laboratorios | Consolidar la practica con evidencias reproducibles |
 
 ## Laboratorio
 
@@ -39,6 +43,9 @@ Aprende los fundamentos de Linux y la terminal desde cero, usando Ubuntu Server 
 |---|---|---|
 | Estructura de proyecto en Linux | Crear carpetas, archivos, contenido, copias y validacion desde terminal | [Abrir](./laboratorios/estructura-proyecto-linux.md) |
 | Entorno multiusuario por roles | Crear usuarios, grupos, propiedad y permisos para una carpeta compartida | [Abrir](./laboratorios/entorno-multiusuario-roles.md) |
+| Permisos en Linux | Practicar chmod, chown, chgrp y permisos simbolicos y octales | [Abrir](./laboratorios/permisos-lab.md) |
+| Servicios y systemd | Gestionar servicios, crear servicios personalizados y revisar logs | [Abrir](./laboratorios/servicios-lab.md) |
+| Gestion de paquetes | Instalar, buscar, actualizar y eliminar software con APT y Snap | [Abrir](./laboratorios/paquetes-lab.md) |
 
 ## Material De Apoyo
 
